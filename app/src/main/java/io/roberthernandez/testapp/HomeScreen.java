@@ -15,15 +15,15 @@ import java.io.InputStreamReader;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Random;
-// import java.util.Random;
 
 
 public class HomeScreen extends AppCompatActivity {
 
     LinearLayout background;
-    Button btnGreen, btnBlue;
+    Button btnBlue;
     ArrayList<String> haikus;
     final int numberOfHaikusInFile = 18;
+    String filename = "famous_haikus.txt";
     Random rand;
 
     @Override
@@ -32,18 +32,10 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.linear_layout);
 
         background = (LinearLayout) findViewById(R.id.background);
-        btnGreen = (Button) findViewById(R.id.btnGreen);
         btnBlue = (Button) findViewById(R.id.btnBlue);
 
-        haikus = getHaikus();
         rand = new Random();
-
-        btnGreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View view) {
-                background.setBackgroundColor(Color.parseColor("#00ff00"));
-            }
-        });
+        haikus = getHaikus();
 
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +60,6 @@ public class HomeScreen extends AppCompatActivity {
         // only for testing
         TextView textView = (TextView) findViewById(R.id.textView);
 
-        String filename = "famous_haikus.txt";
         ArrayList<String> haikuList = new ArrayList<String>();
 
         try {

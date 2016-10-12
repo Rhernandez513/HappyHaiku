@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/haiku"
+        android:textColor="@color/colorWhite"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_weight=".3"
@@ -21,18 +22,10 @@
         android:id="@+id/btnBlue"
         android:layout_width="206dp"
         android:layout_height="wrap_content"
-        android:text="@string/change_to_blue"
+        android:text="@string/generate_haiku"
+        android:textColor="@color/colorAccent"
         android:layout_weight="0.11"
         android:layout_gravity="center_horizontal" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/change_to_green"
-        android:id="@+id/btnGreen"
-        android:layout_gravity="right"
-        android:layout_weight="0" />
 
 
 </LinearLayout>

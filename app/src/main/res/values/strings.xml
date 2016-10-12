@@ -2,8 +2,6 @@
 <resources>
     <string name="app_name">Haiku Generator</string>
     <string name="hello_world">Hello World!</string>
-    <string name="change_to_blue">Change to Blue</string>
-    <string name="change_to_green">Change to Green</string>
     <string name="linear_layout_tutorial">Linear Layout Tutorial</string>
     <string name="generate_haiku">Generate Haiku</string>
     <string name="haiku">Haiku Contents</string>
