@@ -5,4 +5,11 @@
     <string name="linear_layout_tutorial">Linear Layout Tutorial</string>
     <string name="generate_haiku">Generate Haiku</string>
     <string name="haiku">Haiku Contents</string>
+    <string-array name="Languages">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>French</item>
+        <item>Chinese</item>
+        <item>Japanese</item>
+    </string-array>
 </resources>

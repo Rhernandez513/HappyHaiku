@@ -5,8 +5,10 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -25,6 +27,7 @@ public class HomeScreen extends AppCompatActivity {
     final int numberOfHaikusInFile = 18;
     String filename = "famous_haikus.txt";
     Random rand;
+    Spinner LanguageSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,13 @@ public class HomeScreen extends AppCompatActivity {
                 updateHaiku(getSingleHaiku(haikus));
             }
         });
+
+        // Language Translation Selector
+        LanguageSpinner = (Spinner) findViewById(R.id.LanguageSpinner);
+        ArrayAdapter<String> LanguageStringAdapter = new ArrayAdapter<String>(HomeScreen.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Languages));
+        LanguageStringAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        LanguageSpinner.setAdapter(LanguageStringAdapter);
     }
 
     protected String getSingleHaiku(ArrayList<String> list) {
