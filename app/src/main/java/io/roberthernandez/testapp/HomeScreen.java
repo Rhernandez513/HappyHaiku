@@ -5,11 +5,13 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements OnItemSelectedListener {
 
     LinearLayout background;
     Button btnBlue;
@@ -54,6 +56,20 @@ public class HomeScreen extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Languages));
         LanguageStringAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         LanguageSpinner.setAdapter(LanguageStringAdapter);
+        LanguageSpinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+        updateHaiku((String) parent.getItemAtPosition(pos));
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+        System.out.println("Nothing Selected");
     }
 
     protected String getSingleHaiku(ArrayList<String> list) {
