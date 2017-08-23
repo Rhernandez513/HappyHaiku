@@ -27,7 +27,14 @@ public class HomeScreen extends AppCompatActivity implements OnItemSelectedListe
     Button btnBlue;
     ArrayList<String> haikus;
     final int numberOfHaikusInFile = 18;
-    String filename = "famous_haikus.txt";
+    String [] filenames = {
+      "famous_haikus_en.txt"  ,
+      "famous_haikus_es.txt"  ,
+      "famous_haikus_fr.txt"  ,
+      "famous_haikus_chi.txt" ,
+      "famous_haikus_ja.txt"
+    };
+    String filename = filenames[0];
     Random rand;
     Spinner LanguageSpinner;
 
@@ -40,13 +47,13 @@ public class HomeScreen extends AppCompatActivity implements OnItemSelectedListe
         btnBlue = (Button) findViewById(R.id.btnBlue);
 
         rand = new Random();
-        haikus = getHaikus();
+        //haikus = getHaikuFileContents();
 
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
                 background.setBackgroundColor(Color.parseColor("#006699"));
-                updateHaiku(getSingleHaiku(haikus));
+                updateHaiku(getSingleHaiku(getHaikuFileContents(filename)));
             }
         });
 
@@ -63,13 +70,36 @@ public class HomeScreen extends AppCompatActivity implements OnItemSelectedListe
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        updateHaiku((String) parent.getItemAtPosition(pos));
+        setHaikuFileName( (String) parent.getItemAtPosition(pos));
+        // updateHaiku((String) parent.getItemAtPosition(pos));
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
         System.out.println("Nothing Selected");
+    }
+
+    protected void setHaikuFileName(String Language) {
+        switch (Language) {
+            case "English":
+                filename = filenames[0];
+                break;
+            case "Spanish":
+                filename = filenames[1];
+                break;
+            case "French":
+                filename = filenames[2];
+                break;
+            case "Chinese":
+                filename = filenames[3];
+                break;
+            case "Japanese":
+                filename = filenames[4];
+                break;
+            default:
+                filename = filenames[0];
+        }
     }
 
     protected String getSingleHaiku(ArrayList<String> list) {
@@ -81,7 +111,7 @@ public class HomeScreen extends AppCompatActivity implements OnItemSelectedListe
         textView.setText(contents);
     }
 
-    protected ArrayList<String> getHaikus() {
+    protected ArrayList<String> getHaikuFileContents(String haiku_file) {
 
         // only for testing
         TextView textView = (TextView) findViewById(R.id.textView);
@@ -90,7 +120,8 @@ public class HomeScreen extends AppCompatActivity implements OnItemSelectedListe
 
         try {
             final AssetManager assetManager = getApplicationContext().getAssets();
-            final InputStream inputStream = assetManager.open(filename);
+            // final InputStream inputStream = assetManager.open(filename);
+            final InputStream inputStream = assetManager.open(haiku_file);
             final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
