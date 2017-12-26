@@ -3,7 +3,7 @@
     <string name="app_name">Haiku Generator</string>
     <string name="hello_world">Hello World!</string>
     <string name="linear_layout_tutorial">Linear Layout Tutorial</string>
-    <string name="generate_haiku">Generate Haiku</string>
+    <string name="generate_haiku">Happy Haiku</string>
     <string name="haiku">Haiku Contents</string>
     <string-array name="Languages">
         <item>English</item>
